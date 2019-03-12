@@ -28,15 +28,15 @@ public static int partition ( int[] data, int start, int end){
       start++;
       pivot = start-1;
     }
-    System.out.println("PIVOT:"+pivot);
-    System.out.println("START:"+start);
+    //System.out.println("PIVOT:"+pivot);
+    //System.out.println("START:"+start);
 
     while (start<end){
 
       //System.out.println(start);System.out.println(end);
       //System.out.println(visual(data));
-      System.out.println("END:"+end);
-      System.out.println("START:"+start);
+      //System.out.println("END:"+end);
+      //System.out.println("START:"+start);
 
       if (data[start]>data[pivot]){
         temp = data[end];
@@ -75,7 +75,7 @@ private static String visual(int[] data){
 
 
 public static void main(String[] args){
-  int[] data = {1, 2, 3, 4, 5,6,7,8,9,10,11};
+  /*int[] data = {1, 2, 3, 4, 5,6,7,8,9,10,11};
   int p = partition(data,0,10);
   System.out.println(p);
   System.out.println(visual(data));
