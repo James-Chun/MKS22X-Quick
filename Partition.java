@@ -15,8 +15,8 @@ private static Random rand = new Random();
 
 
 public static int partition ( int[] data, int start, int end){
-
-    int pivot = Math.abs(rand.nextInt() % (end - start-1) ) ; //making seed from that randgen
+    if (start==end)end++;
+    int pivot = Math.abs(rand.nextInt() % (end - start) ) ; //making seed from that randgen
 
     //System.out.println("PIVOT1:"+pivot);
     pivot += start;
@@ -28,14 +28,13 @@ public static int partition ( int[] data, int start, int end){
       start++;
       pivot = start-1;
     }
-    //System.out.println("PIVOT:"+pivot);
-    //System.out.println("START:"+start);
+    System.out.println("PIVOT:"+pivot);
+    System.out.println("START:"+start);
 
-    while (start!=end){
+    while (start<end){
 
       //System.out.println(start);System.out.println(end);
-      System.out.println(visual(data));
-
+      //System.out.println(visual(data));
       System.out.println("END:"+end);
       System.out.println("START:"+start);
 
@@ -81,7 +80,7 @@ public static void main(String[] args){
   System.out.println(p);
   System.out.println(visual(data));
   System.out.println("____");
-  System.out.println(partition(data,p+1,10));
+  System.out.println(partition(data,0,p-1));
   System.out.println(visual(data));
   /*for (int i=0;i<500;i++){
     int pivot = Math.abs(rand.nextInt() % (data.length) ) ; //making seed from that randgen
