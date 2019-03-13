@@ -5,13 +5,13 @@ public class Quick{
     int start = 0;
     int end = data.length-1;
     int pivoted = start;
-    while (start!=k-1){
+    while (start!=end){
       pivoted = Partition.partition(data,start,end);
       if (pivoted==k-1)return data[pivoted];
       if (pivoted > k-1)end=pivoted-1;
       else if (pivoted < k-1)start = pivoted +1;
     }
-    return data[1];
+    return data[k];
   }
 
 
