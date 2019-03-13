@@ -15,7 +15,7 @@ private static Random rand = new Random();
 
 
 public static int partition ( int[] data, int start, int end){
-    if (start==end)end++;
+    if (start==end)return data[start];
     int pivot = Math.abs(rand.nextInt() % (end - start) ) ; //making seed from that randgen
 
     //System.out.println("PIVOT1:"+pivot);
