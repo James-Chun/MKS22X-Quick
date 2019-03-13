@@ -11,13 +11,19 @@ public class Quick{
       if (pivoted > k-1)end=pivoted-1;
       else if (pivoted < k-1)start = pivoted +1;
     }
-    return data[k];
+    return data[k-1];
   }
 
 
   public static void main(String[] args){
-    int[] data = {4,1,7,9,3};
-    //{1,3,4,7,9}
-    System.out.println(quickselect(data,2));
+
+
+    //{1,3,4,5,6,7,9}
+    for (int i =0;i<1000;i++){
+      int[] data = {4,1,7,9,3,5,6};
+      if (quickselect(data,7)!=9) {
+        System.out.println("false");
+      }
+    }
   }
 }
