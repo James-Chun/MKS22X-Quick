@@ -2,6 +2,7 @@ public class Quick{
   /*return the value that is the kth smallest value of the array.
   */
   public static int quickselect(int []data, int k){
+    if (data.length==1)return data[0];
     int start = 0;
     int end = data.length-1;
     int pivoted = start;
@@ -20,8 +21,8 @@ public class Quick{
 
     //{1,3,4,5,6,7,9}
     for (int i =0;i<1000;i++){
-      int[] data = {4,1,7,9,3,5,6};
-      if (quickselect(data,7)!=9) {
+      int[] data = {1};
+      if (quickselect(data,0)!=1) {
         System.out.println("false");
       }
     }
