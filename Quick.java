@@ -8,11 +8,11 @@ public class Quick{
     int pivoted = start;
     while (start!=end){
       pivoted = Partition.partition(data,start,end);
-      if (pivoted==k-1)return data[pivoted];
-      if (pivoted > k-1)end=pivoted-1;
-      else if (pivoted < k-1)start = pivoted +1;
+      if (pivoted==k)return data[pivoted];
+      if (pivoted > k)end=pivoted-1;
+      else if (pivoted < k)start = pivoted +1;
     }
-    return data[k-1];
+    return data[k];
   }
 
 
