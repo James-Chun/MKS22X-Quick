@@ -17,14 +17,32 @@ private static Random rand = new Random();
 public static int partition ( int[] data, int start, int end){
     if (start==end)return start;
 
-    int pivot = Math.abs(rand.nextInt() % (end - start) ) ; //making random pivot
+    //int pivot = Math.abs(rand.nextInt() % (end - start) ) ; //making random pivot
+    //pivot += start;
 
-    pivot += start;
+    int pivot = (end - start)/2;
+    int temp1 = 0;
+
+    //--------------------------------------------------------------------------------------------------------------------------------------------------
+    //choosing the median value for pivot instead of random
+    if ( data[start] >= data[pivot] && data[start] >= data[end] ){
+        if (data [pivot] >= data [start]) { temp1 = pivot; }
+        else{ temp1 = start; }
+    }
+    else if( data[end] >= data[pivot] && data[end] >= data[start] ){
+        if (data [pivot] >= data [start]){ temp1 = pivot; }
+        else{ temp1 = start; }
+    }
+    else if ( data[pivot] >= data[start] && data[pivot] >= data[end] ){
+        if (data [end] >= data [start]){ temp1 = end; }
+        else{ temp1 = start; }
+    }
+
     int temp = 0;
     if (start!=end){    //placing pivot at the front of the list
       temp = data[start];
-      data[start]=data[pivot];
-      data[pivot]=temp;
+      data[start]=data[temp1];
+      data[temp1]=temp;
       start++;
       pivot = start-1;
     }
@@ -47,12 +65,18 @@ public static int partition ( int[] data, int start, int end){
         data[pivot]=temp;
         return start;
       }
-      if (data[pivot]<data[start]){   //if pivot is less than value at start/end, place pivot at spot right before start/end (all values before that are < pivot since the entire while loop was checking for that ya know)
+      else if (data[pivot]<data[start]){   //if pivot is less than value at start/end, place pivot at spot right before start/end (all values before that are < pivot since the entire while loop was checking for that ya know)
         temp = data[start-1];
         data[start-1]=data[pivot];
         data[pivot]=temp;
+        return start-1;
       }
-      return start-1;
+      else {
+        int random = rand.nextInt()%2;
+        if (random == 1){
+
+        }
+      }
 }
 
 
