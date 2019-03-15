@@ -15,47 +15,39 @@ private static Random rand = new Random();
 
 
 public static int partition ( int[] data, int start, int end){
-    if (start==end)return data[start];
-    int pivot = Math.abs(rand.nextInt() % (end - start) ) ; //making seed from that randgen
+    if (start==end)return start;
 
-    //System.out.println("PIVOT1:"+pivot);
+    int pivot = Math.abs(rand.nextInt() % (end - start) ) ; //making random pivot
+
     pivot += start;
     int temp = 0;
-    if (start!=end){
+    if (start!=end){    //placing pivot at the front of the list
       temp = data[start];
       data[start]=data[pivot];
       data[pivot]=temp;
       start++;
       pivot = start-1;
     }
-    //System.out.println("PIVOT:"+pivot);
-    //System.out.println("START:"+start);
-
-    while (start<end){
-
-      //System.out.println(start);System.out.println(end);
-      //System.out.println(visual(data));
-      //System.out.println("END:"+end);
-      //System.out.println("START:"+start);
-
-      if (data[start]>data[pivot]){
+    //--------------------------------------------------------------------------------------------------------------------------------------------------
+    while (start<end){    //going through the list "sorting" the values
+      if (data[start]>data[pivot]){   //if start value is > pivot then switch that value with the value at the end and move end back
         temp = data[end];
         data[end]=data[start];
         data[start]=temp;
         end--;
       }
-      else if (data[start]<data[pivot]){
+      else if (data[start]<data[pivot]){    //if value at start is < pivot then simply move start ahead since list is being looked at from left to right
         start++;
       }
     }
-
-      if (data[pivot]>data[start]){
+    //--------------------------------------------------------------------------------------------------------------------------------------------------
+      if (data[pivot]>data[start]){    // if pivot is greater than value at where start and end meet, switch start and pivot since all values of pivot belong on that side
         temp = data[start];
         data[start]=data[pivot];
         data[pivot]=temp;
         return start;
       }
-      if (data[pivot]<data[start]){
+      if (data[pivot]<data[start]){   //if pivot is less than value at start/end, place pivot at spot right before start/end (all values before that are < pivot since the entire while loop was checking for that ya know)
         temp = data[start-1];
         data[start-1]=data[pivot];
         data[pivot]=temp;
