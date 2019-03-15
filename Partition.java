@@ -57,6 +57,20 @@ public static int partition ( int[] data, int start, int end){
       else if (data[start]<data[pivot]){    //if value at start is < pivot then simply move start ahead since list is being looked at from left to right
         start++;
       }
+
+      else if (data [start] == data [pivot]){   //if value being looked at is the same as pivot, use rand to get 50-50 chance of putting it on either side of pivot
+            int r =  (rand.nextInt() % 2 );
+            if (r == 0){
+                temp = data [start];
+                data [start] = data [end];
+                data [end] = temp;
+                end --;
+            }
+            else{
+                start ++;
+            }
+        }
+
     }
     //--------------------------------------------------------------------------------------------------------------------------------------------------
       if (data[pivot]>data[start]){    // if pivot is greater than value at where start and end meet, switch start and pivot since all values of pivot belong on that side
@@ -69,15 +83,10 @@ public static int partition ( int[] data, int start, int end){
         temp = data[start-1];
         data[start-1]=data[pivot];
         data[pivot]=temp;
-        return start-1;
       }
-      else {
-        int random = rand.nextInt()%2;
-        if (random == 1){
+      return start-1;
+    }
 
-        }
-      }
-}
 
 
 private static String visual(int[] data){
